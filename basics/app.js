@@ -27,16 +27,7 @@ const server = httpModule.createServer(function (req, res) {
     })
     req.on('end',()=>{
         const finalData = Buffer.concat(data).toString()
-        // fs.writeFileSync('formContent.txt',finalData)
-        fs.writeFile('formContent.txt',finalData, (err)=>{
-            if (err) {
-                console.error('Error writing to file:', err);
-            } else {
-                console.log('Data has been written to the file.');
-                res.statusCode = 302
-                res.setHeader('Location', '/')
-            }
-        })
+        fs.writeFileSync('formContent.txt',finalData)
     })
   }
   else {
